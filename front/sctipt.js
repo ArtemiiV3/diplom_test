@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Создание кнопки для скачивания PDF
                 const downloadButton = document.createElement("a");
-                downloadButton.href = `http://localhost:3000${data.pdfUrl}`;
+                downloadButton.href = `http://194.87.102.125:3000${data.pdfUrl}`; // Заменено на IP адрес
                 downloadButton.textContent = "Скачать PDF";
                 downloadButton.download = "documentation.pdf"; // Определяем имя файла
                 downloadButton.className = "download-button";
