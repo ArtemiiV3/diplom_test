@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = document.createElement("p");
     const generatorSection = document.querySelector(".document-generator");
 
-    const resultSection = document.createElement("div"); 
-    generatorSection.appendChild(resultSection); 
+    const resultSection = document.createElement("div");
+    generatorSection.appendChild(resultSection);
 
     button.addEventListener("click", async () => {
         const url = input.value.trim();
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resultSection.appendChild(message);
 
         try {
-            const response = await fetch("http://194.87.102.125/generate-pdf", { // Исправлено на правильный адрес
+            const response = await fetch("https://194.87.102.125/generate-pdf", { // HTTPS для сервера
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 message.textContent = "Документ сгенерирован!";
 
                 const downloadButton = document.createElement("a");
-                downloadButton.href = `http://194.87.102.125${data.pdfUrl}`; 
+                downloadButton.href = `https://194.87.102.125${data.pdfUrl}`;
                 downloadButton.textContent = "Скачать PDF";
                 downloadButton.download = "documentation.pdf";
                 downloadButton.className = "download-button";
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 message.textContent = "Ошибка при обработке.";
             }
         } catch (error) {
-            console.error(error);
+            console.error("Ошибка:", error);
             message.textContent = "Произошла ошибка. Попробуйте еще раз.";
         }
     });
