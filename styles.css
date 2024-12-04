@@ -1,0 +1,242 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('files/Montserrat-Regular.ttf') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'BarcadeBrawl';
+    src: url('files/BarcadeBrawlRegular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+
+/* Основные настройки */
+body {
+    font-family: 'Montserrat';
+    font-weight: Regular;
+    margin: 0;
+    padding: 0px;
+    background-color: #181818;
+    color: #D3FF12;
+    line-height: 1.6;
+    background-image: url('files/Фон линии.svg');
+    background-size: auto; 
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+h1, h2, h3 {
+    font-family: BarcadeBrawl;
+    font-weight: Regular;
+    text-transform: uppercase;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 200px;
+    align-items: center;
+}
+
+.responsive-image {
+    width: 10%;
+    height: auto;
+}
+
+.nav a {
+    margin: 50px;
+    font-size: 24px;
+    align-items: center;
+}
+
+.create-project-btn {
+    background-color: #D3FF12;
+    font-family: BarcadeBrawl;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.create-project-btn:hover {
+    background-color: #D3FF12;
+}
+
+/* Main Section */
+.main-section {  
+    padding: 50px 200px;
+}
+
+.main-section h1 {
+    font-size: 70px;
+    color: #D3FF12;
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+
+
+/* About Project */
+.about-project {
+    padding: 60px 200px;
+}
+
+.about-project h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #D3FF12;
+}
+
+/*.about-project span {
+    font-size: 28px;
+    color: #ffffff;
+} */
+.about-project p {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+/* Document Generator */
+.document-generator {
+    text-align: center;
+    padding: 60px 200px;
+    border-top: 2px solid #D3FF12;
+    border-bottom: 2px solid #D3FF12;
+}
+
+.document-generator input, .document-generator select, .document-generator button {
+    margin: 10px 5px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.document-generator input {
+    width: 300px;
+    border: 1px solid #D3FF12;
+    color: #181818;
+}
+
+.document-generator select {
+    border: 1px solid #D3FF12;
+    background-color: #181818;
+    color: #D3FF12;
+}
+
+.document-generator button {
+    font-family: BarcadeBrawl;
+    background-color: #D3FF12;
+    border: none;
+    cursor: pointer;
+}
+
+.document-generator button:hover {
+    background-color: #D3FF12;
+}
+
+.document-generator p {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+/* User Guide */
+.user-guide {
+    padding: 60px 200px;
+}
+
+.user-guide h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.step {
+    margin-bottom: 20px;
+}
+
+.step h3 {
+    font-size: 32px;
+    color: #D3FF12;
+    margin-bottom: 10px;
+}
+
+.step ol {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+/* FAQs */
+.faq {
+    padding: 60px 200px;
+}
+
+.faq p {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.faq h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #D3FF12;
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-item h3 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #D3FF12;
+}
+
+.faq-item p {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 200px;
+    text-align: center;
+    border-top: 2px solid #D3FF12;
+    color: #141414;
+}
+
+.footer p {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: left;
+    position: right;
+}
+
+.footer nav a {
+    margin: 0 50px;
+    font-size: 24px;
+}
