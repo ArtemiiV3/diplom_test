@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resultSection.appendChild(message);
 
         try {
-            const response = await fetch("http://localhost:3000/generate-pdf", {
+            const response = await fetch("http://194.87.102.125:3000/generate-pdf", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
