@@ -1,27 +1,30 @@
 const express = require("express");
 const path = require("path");
-const axios = require('axios');
-const cheerio = require('cheerio');
-const PDFDocument = require('pdfkit');
-const fs = require('fs');
-const cors = require('cors');
-
+const cheerio = require("cheerio");
+const PDFDocument = require("pdfkit");
+const fs = require("fs");
+const cors = require("cors");
 const app = express();
-app.use(cors());  // Разрешаем CORS
+
+// Разрешаем CORS
+app.use(cors());
 app.use(express.json());
 
-// Логика для получения контента с GitHub
+// Логика для получения контента с GitHub (используем fetch вместо axios)
 async function getPageContent(url) {
   try {
-    const response = await axios.get(url);
-    return response.data;
+    const response = await fetch(url);  // Используем fetch вместо axios
+    if (!response.ok) {
+      throw new Error("Ошибка при получении данных с GitHub");
+    }
+    return await response.text();
   } catch (error) {
-    console.error('Ошибка при получении содержимого страницы:', error);
+    console.error("Ошибка при получении содержимого страницы:", error);
     return null;
   }
 }
 
-// Логика для извлечения текста из GitHub
+// Логика для извлечения текста из HTML с помощью Cheerio
 function parseTextWithReactCodeLines(htmlContent) {
   const $ = cheerio.load(htmlContent);
   const codeLines = [];
@@ -71,11 +74,12 @@ app.post("/generate-pdf", async (req, res) => {
     return res.status(400).json({ success: false, message: "URL не предоставлен." });
   }
 
-  const outputPDFPath = path.join(__dirname, "public", "output.pdf");
+  // Сохраняем файл во временную директорию, чтобы избежать проблем с правами на запись
+  const outputPDFPath = path.join("/tmp", "output.pdf");
 
   try {
     await generatePDF(url, outputPDFPath);
-    res.json({ success: true, pdfUrl: "/output.pdf" });
+    res.json({ success: true, pdfUrl: "/output.pdf" });  // Отправляем ссылку на файл
   } catch (error) {
     console.error(error);
     res.status(500).json({ success: false, message: "Ошибка при генерации PDF." });
