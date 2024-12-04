@@ -4,9 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const message = document.createElement("p");
     const generatorSection = document.querySelector(".document-generator");
 
-    // Создаем контейнер для сообщения и кнопки скачивания
-    const resultSection = document.createElement("div"); // Новый контейнер
-    generatorSection.appendChild(resultSection); // Добавляем его в `generatorSection`
+    const resultSection = document.createElement("div"); 
+    generatorSection.appendChild(resultSection); 
 
     button.addEventListener("click", async () => {
         const url = input.value.trim();
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resultSection.appendChild(message);
 
         try {
-            const response = await fetch("http://194.87.102.125:3000/generate-pdf", {
+            const response = await fetch("http://194.87.102.125/generate-pdf", { // Исправлено на правильный адрес
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -36,15 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (data.success && data.pdfUrl) {
                 message.textContent = "Документ сгенерирован!";
 
-                // Создание кнопки для скачивания PDF
                 const downloadButton = document.createElement("a");
-                downloadButton.href = `http://194.87.102.125:3000${data.pdfUrl}`; // Заменено на IP адрес
+                downloadButton.href = `http://194.87.102.125${data.pdfUrl}`; 
                 downloadButton.textContent = "Скачать PDF";
-                downloadButton.download = "documentation.pdf"; // Определяем имя файла
+                downloadButton.download = "documentation.pdf";
                 downloadButton.className = "download-button";
 
-                // Добавляем кнопку на страницу
-                resultSection.appendChild(downloadButton); // Добавляем в `resultSection`
+                resultSection.appendChild(downloadButton);
             } else {
                 message.textContent = "Ошибка при обработке.";
             }
