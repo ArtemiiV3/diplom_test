@@ -14,11 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        // Очистить предыдущие результаты
+        resultSection.innerHTML = "";
+        
         message.textContent = "Генерация документации...";
         resultSection.appendChild(message);
 
         try {
-            const response = await fetch("https://194.87.102.125/generate-pdf", { // HTTPS для сервера
+            const response = await fetch("http://194.87.102.125:3000/generate-pdf", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -36,11 +39,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 message.textContent = "Документ сгенерирован!";
 
                 const downloadButton = document.createElement("a");
-                downloadButton.href = `https://194.87.102.125${data.pdfUrl}`;
+                downloadButton.href = `http://194.87.102.125:3000/${data.pdfUrl}`;
                 downloadButton.textContent = "Скачать PDF";
                 downloadButton.download = "documentation.pdf";
                 downloadButton.className = "download-button";
 
+                // Добавляем кнопку скачивания
                 resultSection.appendChild(downloadButton);
             } else {
                 message.textContent = "Ошибка при обработке.";
@@ -51,5 +55,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
-
-
